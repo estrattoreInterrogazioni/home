@@ -1,5 +1,17 @@
+@font-face {
+    font-family: 'ubuntu';
+    src:  url('/assets/fonts/Ubuntu-Regular.ttf') format('ttf');
+  }
+
+@import url("style/agenda.css");
+@import url("style/container.css");
+
 html, body{
-    margin:0;
-    padding: 0;
     height: 100%;
+    font-family: Ubuntu-Regular;
+}
+
+* {
+    border: none;
+    outline: none;
 }

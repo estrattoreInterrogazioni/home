@@ -1,0 +1,15 @@
+.h, .v {
+    display: flex;
+}
+
+.h {
+    flex-direction: row;
+}
+
+.v {
+    flex-direction: column;
+}
+
+.el {
+    flex-grow: 1;
+}
