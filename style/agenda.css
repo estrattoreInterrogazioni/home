@@ -1,3 +1,31 @@
 #agenda {
+    --radius : 10px;
+    --padding: 10px;
+}
+
+#agenda {
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    border-radius: var(--radius);
+}
+
+#agenda .dayBlock{
+    justify-content: center;
+    background: #2bab2b;
+    border-radius: var(--radius);
+    
+}
+
+#agenda .day {
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+}
+
+#agenda .title {
+    
+    color: #fff;
+    text-align: center;
+}
+
+#agenda .text {
+    text-align: center;
 }

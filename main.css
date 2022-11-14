@@ -1,14 +1,15 @@
-@font-face {
-    font-family: 'ubuntu';
-    src:  url('/assets/fonts/Ubuntu-Regular.ttf') format('ttf');
-  }
-
 @import url("style/agenda.css");
 @import url("style/container.css");
 
+@font-face {
+    font-family: 'ubuntu';
+    src:  url('./asset/font/ubuntu/Ubuntu-Light.ttf');
+}
+
+
 html, body{
     height: 100%;
-    font-family: Ubuntu-Regular;
+    font-family: ubuntu;
 }
 
 * {
