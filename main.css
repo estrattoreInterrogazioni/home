@@ -3,16 +3,40 @@
 
 @font-face {
     font-family: 'ubuntu';
-    src:  url('./asset/font/ubuntu/Ubuntu-Light.ttf');
+    src:  url('./asset/font/ubuntu/Ubuntu-Regular.ttf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'ubuntu';
+    src:  url('./asset/font/ubuntu/Ubuntu-Medium.ttf');
+    font-weight: 700;
 }
 
 
 html, body{
     height: 100%;
+    width: 100%;
+
+    margin: 0;
+
     font-family: ubuntu;
 }
 
 * {
     border: none;
     outline: none;
+}
+
+body > *:not(#agenda) {
+    padding-left: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #006013;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #00a204;
 }

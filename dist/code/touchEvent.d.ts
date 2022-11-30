@@ -1,0 +1,1 @@
+export declare function setAgendaSwipeEvent(agenda: HTMLElement, setAgendaMonth: (num: number, monthEl: HTMLElement, titles: HTMLCollectionOf<HTMLElement>) => void, day: Date, monthEl: HTMLElement, titles: HTMLCollectionOf<HTMLElement>): void;
