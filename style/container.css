@@ -13,3 +13,7 @@
 .el {
     flex-grow: 1;
 }
+
+.base {
+    flex-basis: 1;
+}
