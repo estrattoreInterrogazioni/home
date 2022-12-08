@@ -1,1 +1,2 @@
-export declare function setAgendaMonth(num: number, monthEl: HTMLElement, titles: HTMLCollectionOf<HTMLElement>): void;
+import { agenda } from "./agenda";
+export declare function setAgendaMonth(this: agenda, num: number): void;

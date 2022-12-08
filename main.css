@@ -1,6 +1,6 @@
 @import url("style/agenda.css");
 @import url("style/container.css");
-@import url("style/monthSwicther.css");
+@import url("style/monthSwitcher.css");
 
 @font-face {
     font-family: 'ubuntu';
@@ -18,7 +18,8 @@ html, body{
     height: 100%;
     width: 100%;
 
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
 
     font-family: ubuntu;
 }

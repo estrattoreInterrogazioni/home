@@ -1,16 +1,11 @@
-import {setAgendaMonth} from "./setAgendaMonth.js"
+import {agenda} from "./agenda.js"
 
-export function setAgendaSwipeEvent(
-    buttonLeft : HTMLButtonElement,
-    buttonRight : HTMLButtonElement,
-    monthEl : HTMLElement,
-    titles : HTMLCollectionOf<HTMLElement>){
-    
-    buttonLeft.addEventListener("click", e => {
-        setAgendaMonth(-1, monthEl, titles);
+export function setAgendaSwipeEvent(this : agenda){
+    this.buttonLeft.addEventListener("click", (e : MouseEvent) => {
+        this.setAgendaMonth(-1);
     });
     
-    buttonRight.addEventListener("click", e => {
-        setAgendaMonth(1, monthEl, titles);
+    this.buttonRight.addEventListener("click", (e : MouseEvent) => {
+        this.setAgendaMonth(1);
     });
 }

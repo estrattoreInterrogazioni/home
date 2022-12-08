@@ -1,12 +1,22 @@
-export function setAgendaMonth(num, monthEl, titles) {
-    var day = new Date();
-    day.setMonth(day.getMonth() + num);
-    monthEl.innerText = day.toLocaleDateString("default", { month: "long", year: "numeric" });
-    day = new Date(day.getFullYear(), day.getMonth(), 1);
-    day.setDate(day.getDate() - (day.getDay() - 1));
-    for (var i of titles) {
-        i.innerText = i.innerText.replace(/^[0-9]+/gms, day.getDate().toString());
-        day.setDate(day.getDate() + 1);
+export function setAgendaMonth(num) {
+    this.day = new Date(this.day.getFullYear(), this.day.getMonth() + num, 1);
+    this.monthEl.innerText = this.day.toLocaleDateString("default", {
+        month: "long",
+        year: "numeric",
+    });
+    var dayIter = new Date();
+    dayIter.setDate(this.day.getDate() - (this.day.getDay() - 1));
+    for (var i of this.titles) {
+        if (dayIter.getDay() == 0) {
+            dayIter.setDate(dayIter.getDate() + 1);
+        }
+        i.innerText =
+            dayIter.getDate().toString() +
+                "\n" +
+                dayIter.toLocaleDateString("default", {
+                    weekday: "long",
+                });
+        dayIter.setDate(dayIter.getDate() + 1);
     }
 }
 //# sourceMappingURL=setAgendaMonth.js.map

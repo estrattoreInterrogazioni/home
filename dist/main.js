@@ -1,7 +1,9 @@
-var today = new Date();
 var monthEl = document.getElementById("month");
-var agenda = document.getElementById("agenda");
+var agendaEl = document.getElementById("agenda");
 var titles = document.getElementsByClassName("title");
-import { createAgenda } from "./code/agenda.js";
-createAgenda(agenda, titles, monthEl);
+var buttonLeft = document.getElementById("btnMonthBefore");
+var buttonRight = document.getElementById("btnMonthAfter");
+import { agenda } from "./code/agenda.js";
+var agen = new agenda(agendaEl, monthEl, titles, buttonLeft, buttonRight, new Date());
+agen.createAgenda();
 //# sourceMappingURL=main.js.map
