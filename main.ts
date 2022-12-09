@@ -4,7 +4,7 @@ var titles = <HTMLCollectionOf<HTMLElement>>document.getElementsByClassName("tit
 var buttonLeft = <HTMLButtonElement>document.getElementById("btnMonthBefore");
 var buttonRight = <HTMLButtonElement>document.getElementById("btnMonthAfter");
 
-import {agenda} from "./code/agenda.js";
+import {agenda} from "./code/agenda/agenda.js";
 
 var agen = new agenda(agendaEl, monthEl, titles, buttonLeft, buttonRight, new Date());
 agen.createAgenda();
