@@ -4,12 +4,12 @@
 
 @font-face {
     font-family: 'ubuntu';
-    src:  url('./asset/font/ubuntu/Ubuntu-Regular.ttf');
+    src:  url('../asset/font/ubuntu/Ubuntu-Regular.ttf');
     font-weight: 400;
 }
 @font-face {
     font-family: 'ubuntu';
-    src:  url('./asset/font/ubuntu/Ubuntu-Medium.ttf');
+    src:  url('../asset/font/ubuntu/Ubuntu-Medium.ttf');
     font-weight: 700;
 }
 

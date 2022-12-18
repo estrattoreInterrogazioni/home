@@ -1,4 +1,4 @@
-import { agenda } from "../agenda.js";
+import { agenda } from "./agenda";
 
 export function createAgenda(this: agenda) {
   /*'

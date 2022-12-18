@@ -15,7 +15,7 @@
       "sourceMap": true,
       /* Generates corresponding '.map' file. */
       // "outFile": "main.js",                       /* Concatenate and emit output to single file. */
-      "outDir": "./dist",
+      "outDir": "./src/dist",
       /* Redirect output structure to the directory. */
       // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
       "removeComments": true,                /* Do not emit comments to output. */
@@ -58,10 +58,10 @@
       // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
     },
     "include": [
-        "main.ts",
-        "code/*"
+        "./src/main.ts",
+        "./src/code/*"
     ],
     "exclude": [
-      "./dist/**/*"
+      "./src/dist/**/*"
     ]
   }

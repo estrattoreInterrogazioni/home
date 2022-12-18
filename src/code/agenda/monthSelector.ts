@@ -1,4 +1,4 @@
-import {agenda} from "./agenda.js"
+import {agenda} from "./agenda"
 
 export function setAgendaSwipeEvent(this : agenda){
     this.buttonLeft.addEventListener("click", (e : MouseEvent) => {

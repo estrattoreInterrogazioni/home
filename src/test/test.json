@@ -1,0 +1,15 @@
+{
+    "people" : [
+        {"name" : "Matteo", "score" : 1.0},
+        {"name" : "Luca", "score" : 0.8},
+        {"name" : "Marco", "score" : 0.2},
+        {"name" : "Giovanni", "score" : 1.0}
+    ],
+    "subjects" : [
+        {"name" : "inglese", "number" : 3, "days" : [1, 3]},
+        {"name" : "italiano", "number" : 2, "days" : [1, 6]}
+    ],
+    "past" : [
+        {"subject" : "inglese", "people" : ["Matteo", "Giovanni"], "date" : "15/12/2022"}
+    ]
+}

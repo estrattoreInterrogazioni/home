@@ -4,15 +4,14 @@ var titles = <HTMLCollectionOf<HTMLElement>>document.getElementsByClassName("tit
 var buttonLeft = <HTMLButtonElement>document.getElementById("btnMonthBefore");
 var buttonRight = <HTMLButtonElement>document.getElementById("btnMonthAfter");
 
-var materie = <HTMLElement>document.getElementById("materie");
-var persone = <HTMLElement>document.getElementById("persone");
+var inputFile = <HTMLInputElement>document.getElementById("jsonFile");
 
-import {agenda} from "./code/agenda/agenda.js";
-import {list} from "./code/list/list.js";
+import {agenda} from "./code/agenda/agenda";
+import {jsonFile} from "./code/jsonFile/jsonFile";
 
 var agen = new agenda(agendaEl, monthEl, titles, buttonLeft, buttonRight, new Date());
 agen.createAgenda();
 
-var mates = new list(materie, ()=> {});
-var people = new list(persone, ()=>{});
+var file = new jsonFile(inputFile);
+
 
