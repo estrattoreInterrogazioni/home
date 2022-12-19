@@ -1,4 +1,4 @@
-import { agenda } from "./agenda";
+import { agenda } from "./agenda.js";
 
 export function setAgendaMonth(this: agenda, num: number) {
   this.day = new Date(this.day.getFullYear(), this.day.getMonth() + num, 1);

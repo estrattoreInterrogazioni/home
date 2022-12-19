@@ -1,4 +1,4 @@
-import { agenda } from "./agenda";
+import { agenda } from "./agenda.js";
 
 export function createAgenda(this: agenda) {
   /*'
@@ -19,7 +19,7 @@ export function createAgenda(this: agenda) {
   dayEl.setAttribute("class", "v day");
   dayEl.innerHTML = /*html*/ `
         <div class="title">Lunedì</div>
-        <div class="text" contenteditable>
+        <div class="text">
             <div class="tag v">
                 <div>Luca</div>
                 <div>Matteo</div>

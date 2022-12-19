@@ -1,6 +1,6 @@
-import { createAgenda } from "./createAgenda";
-import { setAgendaMonth } from "./setAgendaMonth";
-import { setAgendaSwipeEvent } from "./monthSelector";
+import { createAgenda } from "./createAgenda.js";
+import { setAgendaMonth } from "./setAgendaMonth.js";
+import { setAgendaSwipeEvent } from "./monthSelector.js";
 
 export class agenda {
 

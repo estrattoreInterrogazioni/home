@@ -6,8 +6,8 @@ var buttonRight = <HTMLButtonElement>document.getElementById("btnMonthAfter");
 
 var inputFile = <HTMLInputElement>document.getElementById("jsonFile");
 
-import {agenda} from "./code/agenda/agenda";
-import {jsonFile} from "./code/jsonFile/jsonFile";
+import {agenda} from "./code/agenda/agenda.js";
+import {jsonFile} from "./code/jsonFile/jsonFile.js";
 
 var agen = new agenda(agendaEl, monthEl, titles, buttonLeft, buttonRight, new Date());
 agen.createAgenda();

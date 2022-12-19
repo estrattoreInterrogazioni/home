@@ -3,7 +3,10 @@
         {"name" : "Matteo", "score" : 1.0},
         {"name" : "Luca", "score" : 0.8},
         {"name" : "Marco", "score" : 0.2},
-        {"name" : "Giovanni", "score" : 1.0}
+        {"name" : "Giovanni", "score" : 1.0},
+        {"name" : "Giacomo", "score" : 1.0},
+        {"name" : "Maddalena", "score" : 1.0},
+        {"name" : "Giuseppe", "score" : 1.0}
     ],
     "subjects" : [
         {"name" : "inglese", "number" : 3, "days" : [1, 3]},

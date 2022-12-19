@@ -1,4 +1,4 @@
-import {compute, jsonFileFormat} from "../compute/compute"
+import {compute, jsonFileFormat} from "../compute/compute.js"
 
 function onReaderLoad(event : ProgressEvent<FileReader>){
     if(event.target){

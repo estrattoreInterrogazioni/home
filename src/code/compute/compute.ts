@@ -44,8 +44,29 @@ export function compute(json : jsonFileFormat){
     if(json.people){
         if(json.subjects){
             
+            var date = new Date();
+
+            for(var i of json.subjects){
+                
+            }
+
+            var dayNumber = date.getDay();
+            for(var subject of json.subjects){
+                for(var day of subject.days){
+                    var dateFromSubject = new Date(day);
+                    if(date.getFullYear() == dateFromSubject.getFullYear() &&
+                    date.getMonth() == dateFromSubject.getMonth() &&
+                    date.getDate() == dateFromSubject.getDate()){
+                        subject.number
+                    }
+                }
+            }
 
 
+           /*<div class="tag v">
+                <div>Luca</div>
+                <div>Matteo</div>
+            </div>*/
 
         }else {
             console.error("no json.subjects");
