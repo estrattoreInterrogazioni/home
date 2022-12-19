@@ -5,12 +5,26 @@
         {"name" : "Marco", "score" : 0.2},
         {"name" : "Giovanni", "score" : 1.0},
         {"name" : "Giacomo", "score" : 1.0},
-        {"name" : "Maddalena", "score" : 1.0},
-        {"name" : "Giuseppe", "score" : 1.0}
+        {"name" : "Maddalena", "score" : 0.34},
+        {"name" : "Giuseppe", "score" : 1.0},
+        {"name" : "Tommaso", "score" : 1.0},
+        {"name" : "Niccolò", "score" : 0.89},
+        {"name" : "Pietro", "score" : 1.0},
+        {"name" : "Emmanuele", "score" : 1.0},
+        {"name" : "Maria", "score" : 1.0},
+        {"name" : "Agostino", "score" : 0.47},
+        {"name" : "Ezechiele", "score" : 1.0},
+        {"name" : "Paolo", "score" : 1.0},
+        {"name" : "Francesco", "score" : 1.0},
+        {"name" : "Anna", "score" : 0.5},
+        {"name" : "Michelangelo", "score" : 1.0},
+        {"name" : "Gabriele", "score" : 1.0},
+        {"name" : "Gioele", "score" : 1.0}
     ],
     "subjects" : [
         {"name" : "inglese", "number" : 3, "days" : [1, 3]},
-        {"name" : "italiano", "number" : 2, "days" : [1, 6]}
+        {"name" : "italiano", "number" : 2, "days" : [1, 6]},
+        {"name" : "arte", "number" : 2, "days" : [2, 6]}
     ],
     "past" : [
         {"subject" : "inglese", "people" : ["Matteo", "Giovanni"], "date" : "15/12/2022"}

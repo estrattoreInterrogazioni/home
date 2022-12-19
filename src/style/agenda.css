@@ -3,10 +3,10 @@ body {
     --padding: 5px;
 }
 
-#agenda {
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    
+#agenda {    
     border-radius: var(--radius);
+
+    background-color: #1c1b1b;
 
     width: 90vw;
     
@@ -17,14 +17,14 @@ body {
     font-size: calc(13px + 0.390625vw);
 }
 
-@media only screen and (max-width:400px) {
+@media only screen and (max-width:600px) {
     #agenda {
         font-size: calc(7px + 0.3vw);
     }
 }
 
 .week {
-
+ margin-top: 1ch;
 }
 
 .day {
@@ -33,8 +33,7 @@ body {
 }
 
 .title {
-    background: #2bab2b;
-    color: #fff;
+    background: #065c28;
 
     text-align: center;
 
@@ -62,10 +61,20 @@ body {
     padding-bottom: 1ch;
 }
 
-.tag div::before {
-    content: "- ";
+.tagTitle{
+    text-align: center;
+    font-weight: bold;
+}
+
+.tag{
+    margin-top: 2ch;
+    background-color: #0e2c1a;
 }
 
 .tag div {
     word-break: break-all;
+}
+
+.tag :not(.tagTitle){
+    margin-left: 1ch;
 }

@@ -22,9 +22,13 @@ html, body{
     margin-right: 0;
 
     font-family: ubuntu;
+    
+    background-color: #212529;
 }
 
 * {
+    color: #f8f9fa;
+
     border: none;
     outline: none;
 }

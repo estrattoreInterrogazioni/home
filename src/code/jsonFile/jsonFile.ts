@@ -10,21 +10,21 @@ function onReaderLoad(event : ProgressEvent<FileReader>){
     }
 }
 
+function onChange(this: GlobalEventHandlers, event : Event) {
+    var reader = new FileReader();
+    reader.onload = (event : ProgressEvent<FileReader>) => {
+        compute(<jsonFileFormat>onReaderLoad(event));
+    };
+    if(event.target)
+    reader.readAsText((<FileList>(<HTMLInputElement>event.target).files)[0]);
+}
+
 export class jsonFile {
     protected el;
 
     constructor(el : HTMLInputElement){
         this.el = el;
 
-        this.el.onchange = this.onChange;
-    }
-
-    onChange(this: GlobalEventHandlers, event : Event) {
-        var reader = new FileReader();
-        reader.onload = (event : ProgressEvent<FileReader>) => {
-            compute(<jsonFileFormat>onReaderLoad(event));
-        };
-        if(event.target)
-        reader.readAsText((<FileList>(<HTMLInputElement>event.target).files)[0]);
+        this.el.onchange = onChange;
     }
 }
