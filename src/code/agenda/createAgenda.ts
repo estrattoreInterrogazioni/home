@@ -18,7 +18,7 @@ export function createAgenda(this: agenda) {
   var dayEl = document.createElement("div");
   dayEl.setAttribute("class", "v day");
   dayEl.innerHTML = /*html*/ `
-        <div class="title">Lunedì</div>
+        <div class="title"></div>
         <div class="text"></div>`;
 
   var weekEl = document.createElement("div");

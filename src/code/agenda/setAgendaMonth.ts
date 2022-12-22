@@ -12,11 +12,6 @@ export function setAgendaMonth(this: agenda, num: number) {
   dayIter.setDate(this.day.getDate() - (this.day.getDay() - 1));
 
   for (var i of this.titles) {
-    if (dayIter.getDay() == 0) {
-      // == sunday
-      dayIter.setDate(dayIter.getDate() + 1);
-    }
-
     i.innerText =
       dayIter.getDate().toString() +
       "\n" +
@@ -25,5 +20,9 @@ export function setAgendaMonth(this: agenda, num: number) {
       });
 
     dayIter.setDate(dayIter.getDate() + 1);
+    if (dayIter.getDay() == 0) {
+      // == sunday
+      dayIter.setDate(dayIter.getDate() + 1);
+    }
   }
 }

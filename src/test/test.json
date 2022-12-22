@@ -1,4 +1,5 @@
 {
+    "waitTime" : 1,
     "people" : [
         {"name" : "Matteo", "score" : 1.0},
         {"name" : "Luca", "score" : 0.8},
@@ -27,6 +28,7 @@
         {"name" : "arte", "number" : 2, "days" : [2, 6]}
     ],
     "past" : [
-        {"subject" : "inglese", "people" : ["Matteo", "Giovanni"], "date" : "15/12/2022"}
+        {"subject" : "inglese", "people" : ["Matteo", "Giovanni"], "date" : "15/12/2022"},
+        {"subject" : "italiano", "people" : ["Marco", "Gioele", "Anna"], "date" : "15/12/2022"}
     ]
 }
