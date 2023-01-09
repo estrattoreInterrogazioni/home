@@ -2,16 +2,22 @@ import { createAgenda } from "./createAgenda.js";
 import { setAgendaMonth } from "./setAgendaMonth.js";
 import { setAgendaSwipeEvent } from "./monthSelector.js";
 export class agenda {
-    constructor(agendaEl, monthEl, titles, buttonLeft, buttonRight, day) {
-        this.createAgenda = createAgenda.bind(this);
-        this.setAgendaMonth = setAgendaMonth.bind(this);
-        this.setAgendaSwipeEvent = setAgendaSwipeEvent.bind(this);
+    agendaEl;
+    monthEl;
+    buttonLeft;
+    buttonRight;
+    day;
+    agendaData;
+    constructor(agendaEl, monthEl, buttonLeft, buttonRight, day, agendaData = []) {
         this.agendaEl = agendaEl;
         this.monthEl = monthEl;
-        this.titles = titles;
         this.buttonLeft = buttonLeft;
         this.buttonRight = buttonRight;
         this.day = day;
+        this.agendaData = agendaData;
     }
+    createAgenda = createAgenda.bind(this);
+    setAgendaMonth = setAgendaMonth.bind(this);
+    setAgendaSwipeEvent = setAgendaSwipeEvent.bind(this);
 }
 //# sourceMappingURL=agenda.js.map

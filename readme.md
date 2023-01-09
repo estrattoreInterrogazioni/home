@@ -11,3 +11,5 @@ non sono stati strovati siti con finalità simili però, per le funzionalità of
 - [connecteam](https://connecteam.com/online-employee-scheduling-apps/?utm_source=google&utm_medium=cpc&utm_campaign=s_en_eur_dsa_e_desktop&utm_term=&utm_content=587348636064&utm_campaignid=16562177915&utm_group=140065119488&utm_matchtype=&utm_kwid=dsa-1694761359247&utm_accountid=3625606301&gclid=Cj0KCQiAtICdBhCLARIsALUBFcFE1DPFp9_HRy5bhsZl9jC6W3IYbqnxfc63oF_s0l6-jaOHeFi2u7saAnSbEALw_wcB)
 ## Mappa delle pagine
 home -> credits
+## Utilizzo
+inserire in input un file contenente i dati necessari per il sorteggio, un esempio di file si trova in "./src/test/test.json"
