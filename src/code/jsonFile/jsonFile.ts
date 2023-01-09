@@ -27,19 +27,33 @@ function onChange(event : Event, agenda : agenda, date : Date) {
     }
 }
 
+export class inputElWithJsonFileAttr extends HTMLInputElement {
+    attriAgenda;
+    attriDate;
+
+    constructor(attriAgenda : agenda, attriDate : Date){
+        super();
+        this.attriAgenda = attriAgenda;
+        this.attriDate = attriDate;
+    }
+}
+
 export class jsonFile {
     protected el;
     protected agenda;
     protected date;
 
-    constructor(el : HTMLInputElement, agenda : agenda, date : Date){
+    constructor(el : inputElWithJsonFileAttr, agenda : agenda, date : Date){
         this.el = el;
         this.agenda = agenda;
         this.date = date;
 
+        this.el.attriAgenda = this.agenda;
+        this.el.attriDate = this.date;
+
         this.el.onchange = (ev : Event) => {
-            console.log("onChangeEvent agendaData: ", this.agenda.agendaData);
-            onChange(ev, this.agenda, this.date);
+            console.log("onChangeEvent agendaData: ", (<inputElWithJsonFileAttr>ev.currentTarget).attriAgenda);
+            onChange(ev, (<inputElWithJsonFileAttr>ev.currentTarget).attriAgenda, (<inputElWithJsonFileAttr>ev.currentTarget).attriDate);
         };
     }
 }

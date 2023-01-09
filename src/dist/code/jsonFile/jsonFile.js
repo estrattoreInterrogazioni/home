@@ -6,7 +6,7 @@ function onReaderLoad(event) {
         }
     }
     else {
-        console.error(".target not present", event);
+        console.error("event.target not present", event);
     }
 }
 function onChange(event, agenda, date) {
@@ -21,6 +21,15 @@ function onChange(event, agenda, date) {
         reader.readAsText(event.target.files[0]);
     }
 }
+export class inputElWithJsonFileAttr extends HTMLInputElement {
+    attriAgenda;
+    attriDate;
+    constructor(attriAgenda, attriDate) {
+        super();
+        this.attriAgenda = attriAgenda;
+        this.attriDate = attriDate;
+    }
+}
 export class jsonFile {
     el;
     agenda;
@@ -29,9 +38,11 @@ export class jsonFile {
         this.el = el;
         this.agenda = agenda;
         this.date = date;
+        this.el.attriAgenda = this.agenda;
+        this.el.attriDate = this.date;
         this.el.onchange = (ev) => {
-            console.log("onChangeEvent agendaData: ", this.agenda.agendaData);
-            onChange(ev, this.agenda, this.date);
+            console.log("onChangeEvent agendaData: ", ev.currentTarget.attriAgenda);
+            onChange(ev, ev.currentTarget.attriAgenda, ev.currentTarget.attriDate);
         };
     }
 }
