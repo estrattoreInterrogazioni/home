@@ -6,4 +6,3 @@ export function setAgendaSwipeEvent() {
         this.setAgendaMonth(1);
     });
 }
-//# sourceMappingURL=monthSelector.js.map

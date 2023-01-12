@@ -1,5 +1,5 @@
 {
-    "planFor" : 12,
+    "planFor" : 24,
     "waitTime" : 1,
     "people" : [
         {"name" : "Matteo", "score" : 1.0},
@@ -29,7 +29,9 @@
         {"name" : "arte", "number" : 2, "days" : [2, 6]}
     ],
     "past" : [
-        {"subject" : "inglese", "people" : ["Matteo", "Giovanni"], "date" : "1/2/2023"},
-        {"subject" : "italiano", "people" : ["Marco", "Gioele", "Anna"], "date" : "1/2/2023"}
+        {"subject" : "inglese", "people" : ["Matteo", "Giovanni"], "date" : "1/10/2023"},
+        {"subject" : "italiano", "people" : ["Marco", "Gioele", "Anna"], "date" : "1/9/2023"},
+        {"subject" : "arte", "people" : ["Gioele", "Michelangelo"], "date" : "1/2/2023"},
+        {"subject" : "arte", "people" : ["Giovanni", "Marco"], "date" : "12/27/2022"}
     ]
 }

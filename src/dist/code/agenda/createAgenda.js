@@ -15,4 +15,3 @@ export function createAgenda() {
     this.setAgendaMonth(0);
     this.setAgendaSwipeEvent();
 }
-//# sourceMappingURL=createAgenda.js.map

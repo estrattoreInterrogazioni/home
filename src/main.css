@@ -2,17 +2,6 @@
 @import url("style/container.css");
 @import url("style/monthSwitcher.css");
 
-@font-face {
-    font-family: 'ubuntu';
-    src:  url('../asset/font/ubuntu/Ubuntu-Regular.ttf');
-    font-weight: 400;
-}
-@font-face {
-    font-family: 'ubuntu';
-    src:  url('../asset/font/ubuntu/Ubuntu-Medium.ttf');
-    font-weight: 700;
-}
-
 
 html, body{
     height: 100%;
@@ -21,7 +10,7 @@ html, body{
     margin-left: 0;
     margin-right: 0;
 
-    font-family: ubuntu;
+    font-family: system-ui;
     
     background-color: #212529;
 }

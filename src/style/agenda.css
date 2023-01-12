@@ -14,7 +14,7 @@ body {
     margin-right: auto;
     margin-top: 10px;
 
-    font-size: calc(13px + 0.390625vw);
+    font-size: calc(11px + 0.390325vw);
 }
 
 @media only screen and (max-width:510px) {
@@ -23,7 +23,7 @@ body {
     }
 }
 
-.week {
+.week:not(:first-child) {
  margin-top: 1ch;
 }
 
@@ -58,7 +58,7 @@ body {
 }
 
 .tag {
-    padding-bottom: 1ch;
+    padding-bottom: 1.5ch;
 }
 
 .tagTitle{

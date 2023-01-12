@@ -1,14 +1,30 @@
-var monthEl = document.getElementById("month");
-var buttonLeft = document.getElementById("btnMonthBefore");
-var buttonRight = document.getElementById("btnMonthAfter");
-var agendaEl = document.getElementById("agenda");
-var inputFile = document.getElementById("jsonFile");
 import { agenda } from "./code/agenda/agenda.js";
-import { jsonFile } from "./code/jsonFile/jsonFile.js";
+import { onReaderLoad } from "./code/jsonFile/onReaderLoad.js";
+import { compute } from "./code/compute/compute.js";
+let monthEl = document.getElementById("month");
+let buttonLeft = document.getElementById("btnMonthBefore");
+let buttonRight = document.getElementById("btnMonthAfter");
+let agendaEl = document.getElementById("agenda");
+let inputFile = document.getElementById("jsonFile");
 let date = new Date();
-var agen = new agenda(agendaEl, monthEl, buttonLeft, buttonRight, date, []);
+date.setHours(0, 0, 0, 0);
+let agen = new agenda(agendaEl, monthEl, buttonLeft, buttonRight, date);
 agen.createAgenda();
-console.log("main.ts: ", agen.agendaData);
-var file = new jsonFile(inputFile, agen, date);
-console.log('inserire un file di input\nun esempio di file accettabile si trova nella cartella "test"');
-//# sourceMappingURL=main.js.map
+debugger;
+inputFile.onchange = (event) => {
+    var reader = new FileReader();
+    reader.onload = (event) => {
+        let res = compute(onReaderLoad(event), agen.day);
+        if (res) {
+            agen.agendaData = res;
+        }
+        else {
+            console.error("json file not ok");
+        }
+        debugger;
+        agen.setAgendaMonth(0);
+    };
+    if (event.target) {
+        reader.readAsText(event.target.files[0]);
+    }
+};

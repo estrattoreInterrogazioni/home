@@ -1,23 +1,51 @@
+import {agenda} from "./code/agenda/agenda.js"
+import {onReaderLoad} from "./code/jsonFile/onReaderLoad.js"
+import {compute} from "./code/compute/compute.js"
+import { jsonFileFormat } from "./code/jsonFile/jsonFileFormat.js"
+
+// HTML QUERY
+
 //mese selezionato
-var monthEl = <HTMLElement>document.getElementById("month");
+let monthEl = <HTMLElement>document.getElementById("month")
 //bottone mese precedente
-var buttonLeft = <HTMLButtonElement>document.getElementById("btnMonthBefore");
+let buttonLeft = <HTMLButtonElement>document.getElementById("btnMonthBefore")
 //bottone mese successivo
-var buttonRight = <HTMLButtonElement>document.getElementById("btnMonthAfter");
+let buttonRight = <HTMLButtonElement>document.getElementById("btnMonthAfter")
 
-var agendaEl = <HTMLElement>document.getElementById("agenda");
+let agendaEl = <HTMLElement>document.getElementById("agenda")
 
-var inputFile = <HTMLInputElement>document.getElementById("jsonFile"); // input type="file"
+let inputFile = <HTMLInputElement>document.getElementById("jsonFile") // input type="file"
 
-import {agenda} from "./code/agenda/agenda.js";
-import {jsonFile, inputElWithJsonFileAttr} from "./code/jsonFile/jsonFile.js";
 
-let date = new Date();
+// VARIABILI LOCALI
 
-var agen = new agenda(agendaEl, monthEl, buttonLeft, buttonRight, date, []);
-agen.createAgenda(); //modifica il DOM, crea la struttura dell'agenda
-console.log("main.ts: ", agen.agendaData)
+let date = new Date()
+date.setHours(0, 0, 0, 0)
 
-var file = new jsonFile(<inputElWithJsonFileAttr>inputFile, agen, date); //processa l'input poi modifica il DOM
+let agen = new agenda(agendaEl, monthEl, buttonLeft, buttonRight, date)
 
-console.log('inserire un file di input\nun esempio di file accettabile si trova nella cartella "test"')
+agen.createAgenda() //modifica il DOM, crea la struttura dell'agenda
+
+debugger
+
+inputFile.onchange = (event : Event) => {
+    var reader = new FileReader()
+
+    reader.onload = (event : ProgressEvent<FileReader>) => {
+
+        let res = compute(<jsonFileFormat>onReaderLoad(event), agen.day)
+        if(res){
+            agen.agendaData = res
+        } else {
+            console.error("json file not ok")
+        }
+
+        debugger
+
+        agen.setAgendaMonth(0)
+    }
+
+    if(event.target){
+    reader.readAsText((<FileList>(<HTMLInputElement>event.target).files)[0])
+    }
+} //processa l'input poi modifica il DOM

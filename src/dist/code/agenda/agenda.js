@@ -20,4 +20,3 @@ export class agenda {
     setAgendaMonth = setAgendaMonth.bind(this);
     setAgendaSwipeEvent = setAgendaSwipeEvent.bind(this);
 }
-//# sourceMappingURL=agenda.js.map
