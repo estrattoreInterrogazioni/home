@@ -1,5 +1,6 @@
 import {person,jsonFileFormat} from "../jsonFile/jsonFileFormat.js"
 
+//rimescola l'array in modo casuale
 function shuffle(array : any[]) {
   let currentIndex = array.length,  randomIndex : number
 
@@ -27,7 +28,8 @@ export function sortPeople(json: jsonFileFormat) {
 
 
     let indexes = [0];
-
+    /*segna gli indici dell'array in cui il valore delle score di due persone sono differenti
+    */
     for(let i=0; i<arr.length; i++){
       if(arr[i].score != arr[Math.max(i-1,0)].score){
         indexes.push(i)

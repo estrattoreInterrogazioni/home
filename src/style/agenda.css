@@ -23,8 +23,8 @@ body {
     }
 }
 
-.week:not(:first-child) {
- margin-top: 1ch;
+.week {
+ margin-bottom: 1ch;
 }
 
 .day {
