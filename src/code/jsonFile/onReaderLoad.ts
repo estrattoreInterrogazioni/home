@@ -1,10 +1,13 @@
+import { jsonFileFormat } from "./jsonFileFormat.js"
+import { error } from "../console.js"
+
 //ritorna il parse del file json in input 
-export function onReaderLoad(event : ProgressEvent<FileReader>){
+export function onReaderLoad(event : ProgressEvent<FileReader>) {
     if(event.target){
         if(event.target.result){
-            return JSON.parse(<string>event.target.result)
+            return <jsonFileFormat>JSON.parse(<string>event.target.result)
         }
     } else {
-        console.error("event.target not present", event)
+        error("event.target not present", event)
     }
 }

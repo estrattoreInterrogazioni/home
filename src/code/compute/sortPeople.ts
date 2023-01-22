@@ -8,7 +8,7 @@ function shuffle(array : any[]) {
   while (currentIndex != 0) {
 
     // Pick a remaining element.
-    randomIndex = Math.floor(Math.random() * currentIndex)
+    randomIndex = Math.round(parseFloat(Math.random().toFixed(70)) * currentIndex)
     currentIndex--
 
     // And swap it with the current element.
@@ -29,7 +29,7 @@ export function sortPeople(json: jsonFileFormat) {
 
     let indexes = [0]
     /*segna gli indici dell'array in cui il valore delle score di due persone sono differenti
-    es: array 1, 1, 1, 0.8, 0.8, 0.2 gli indici sono: 3, 5*/
+    es: array [1, 1, 1, 0.8, 0.8, 0.2] gli indici sono: [3, 5] */
     for(let i=0; i<arr.length; i++){
       if(arr[i].score != arr[Math.max(i-1,0)].score){
         indexes.push(i)

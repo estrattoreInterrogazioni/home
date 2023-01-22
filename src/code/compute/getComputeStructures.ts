@@ -1,15 +1,17 @@
-import {person, subject, jsonFileFormat} from "../jsonFile/jsonFileFormat.js"
+import {subject, jsonFileFormat} from "../jsonFile/jsonFileFormat.js"
+import {sortPeople} from "./sortPeople.js"
 
 // ritorna una mappa tra materia e persone non interrogate
 export function getPeople(json: jsonFileFormat) {
     let personList: string[] = []
-    for (let i of <person[]>json.people) {
-      personList.push(i.name)
-    }
-  
+
     var peopleLists: Map<string, Array<string>> = new Map()
     for (let i = 0; i < (<subject[]>json.subjects).length; i++) {
+      for (let i of sortPeople(json)) {
+        personList.push(i.name)
+      }
       peopleLists.set((<subject[]>json.subjects)[i].name, personList)
+      personList = []
     }
   
     return peopleLists

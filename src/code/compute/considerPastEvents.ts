@@ -2,7 +2,7 @@ import {subject, dayList, subjectGroup, jsonFileFormat} from "../jsonFile/jsonFi
 
 import {isLesserDate, isSameDate} from "./dateOp.js"
 
-import { log } from "../log.js"
+import { log , error} from "../console.js"
 
 export function considerPastEvents(
     json: jsonFileFormat,
@@ -28,7 +28,7 @@ export function considerPastEvents(
         for (let event of json.past) {
           sec = new Date(event.date).getTime()
           if (sec > mem) {
-            console.error("json.past non è in ordine cronologico (dal più recente)")
+            error("json.past non è in ordine cronologico (dal più recente)")
             throw "" //ferma js
           }
           mem = sec

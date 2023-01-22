@@ -1,14 +1,12 @@
 import { createAgenda } from "./createAgenda.js";
 import { setAgendaMonth } from "./setAgendaMonth.js";
 import { setAgendaSwipeEvent } from "./monthSelector.js";
-export class agenda {
-    agendaEl;
-    monthEl;
-    buttonLeft;
-    buttonRight;
-    day;
-    agendaData;
-    constructor(agendaEl, monthEl, buttonLeft, buttonRight, day, agendaData = []) {
+var agenda = (function () {
+    function agenda(agendaEl, monthEl, buttonLeft, buttonRight, day, agendaData) {
+        if (agendaData === void 0) { agendaData = []; }
+        this.createAgenda = createAgenda.bind(this);
+        this.setAgendaMonth = setAgendaMonth.bind(this);
+        this.setAgendaSwipeEvent = setAgendaSwipeEvent.bind(this);
         this.agendaEl = agendaEl;
         this.monthEl = monthEl;
         this.buttonLeft = buttonLeft;
@@ -16,7 +14,6 @@ export class agenda {
         this.day = day;
         this.agendaData = agendaData;
     }
-    createAgenda = createAgenda.bind(this);
-    setAgendaMonth = setAgendaMonth.bind(this);
-    setAgendaSwipeEvent = setAgendaSwipeEvent.bind(this);
-}
+    return agenda;
+}());
+export { agenda };

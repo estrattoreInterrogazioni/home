@@ -1,11 +1,10 @@
 import {subjectGroup, jsonFileFormat, dayList} from "../jsonFile/jsonFileFormat.js"
 
-import {sortPeople} from "./sortPeople.js"
 import {getPeople, getDaySubjectList} from "./getComputeStructures.js"
 
 import {considerPastEvents} from "./considerPastEvents.js"
 
-import { log } from "../log.js"
+import { log } from "../console.js"
 
 /* ------ REGOLE DEL SORTEGGIO ------ (se possibile rispettarle)
 - solo un'interrogazione nello stesso giorno
@@ -24,8 +23,6 @@ export function compute(json: jsonFileFormat, day: Date){
     if (json.subjects) {
       if(json.waitTime > 0){
         if(json.planFor > 0) {
-
-      json.people = sortPeople(json) //rimescola le persone
 
       let peopleLists = getPeople(json)
       let daySubjectList = getDaySubjectList(json)

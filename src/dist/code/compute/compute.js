@@ -1,34 +1,31 @@
 import { subjectGroup, dayList } from "../jsonFile/jsonFileFormat.js";
-import { sortPeople } from "./sortPeople.js";
 import { getPeople, getDaySubjectList } from "./getComputeStructures.js";
 import { considerPastEvents } from "./considerPastEvents.js";
-import { log } from "../log.js";
+import { log } from "../console.js";
 function getWeekDay(day, num) {
     return (day.getDay() - 1 + num) % 6;
 }
 export function compute(json, day) {
+    var _a, _b;
     if (json.people) {
         if (json.subjects) {
             if (json.waitTime > 0) {
                 if (json.planFor > 0) {
-                    json.people = sortPeople(json);
-                    let peopleLists = getPeople(json);
-                    let daySubjectList = getDaySubjectList(json);
-                    let untouchables = [];
+                    var peopleLists = getPeople(json);
+                    var daySubjectList = getDaySubjectList(json);
+                    var untouchables = [];
                     untouchables.length = json.waitTime + 1;
                     untouchables.fill([]);
-                    let agenda = [];
-                    debugger;
+                    var agenda = [];
                     considerPastEvents(json, peopleLists, daySubjectList, untouchables, agenda, day);
-                    debugger;
                     {
-                        let subList = [];
-                        let chosenPeople = [];
-                        let isContained;
-                        let weekDay;
-                        let tempAgendaDate = new Date(day);
+                        var subList_1 = [];
+                        var chosenPeople_1 = [];
+                        var isContained = void 0;
+                        var weekDay = void 0;
+                        var tempAgendaDate = new Date(day);
                         tempAgendaDate.setDate(tempAgendaDate.getDate() - 1);
-                        for (let count = 0; count < json.planFor; count++) {
+                        for (var count = 0; count < json.planFor; count++) {
                             if (count >= json.waitTime + 1) {
                                 untouchables[count % (json.waitTime + 1)] = [];
                             }
@@ -41,46 +38,53 @@ export function compute(json, day) {
                                 tempAgendaDate.setDate(tempAgendaDate.getDate() + 1);
                             }
                             agenda.push(new dayList(new Date(tempAgendaDate), []));
-                            for (let sub of daySubjectList[weekDay]) {
-                                subList = peopleLists.get(sub.name);
-                                chosenPeople = [];
-                                for (let j = 0; j < subList.length; j++) {
+                            for (var _i = 0, _c = daySubjectList[weekDay]; _i < _c.length; _i++) {
+                                var sub = _c[_i];
+                                subList_1 = peopleLists.get(sub.name);
+                                chosenPeople_1 = [];
+                                var _loop_1 = function (j) {
                                     isContained = false;
-                                    if (untouchables.find(value => {
-                                        return value.includes(subList[j]);
+                                    if (untouchables.find(function (value) {
+                                        return value.includes(subList_1[j]);
                                     })) {
                                         isContained = true;
                                     }
                                     if (isContained &&
-                                        (subList.length - (j + 1) - (sub.number - chosenPeople.length) >= 0)) {
-                                        continue;
+                                        (subList_1.length - (j + 1) - (sub.number - chosenPeople_1.length) >= 0)) {
+                                        return "continue";
                                     }
                                     else {
-                                        chosenPeople.push(subList[j]);
-                                        if (chosenPeople.length >= sub.number) {
-                                            break;
+                                        chosenPeople_1.push(subList_1[j]);
+                                        if (chosenPeople_1.length >= sub.number) {
+                                            return "break";
                                         }
                                     }
+                                };
+                                for (var j = 0; j < subList_1.length; j++) {
+                                    var state_1 = _loop_1(j);
+                                    if (state_1 === "break")
+                                        break;
                                 }
-                                peopleLists.set(sub.name, peopleLists.get(sub.name)?.filter(value => {
-                                    return !chosenPeople.includes(value);
+                                peopleLists.set(sub.name, (_a = peopleLists.get(sub.name)) === null || _a === void 0 ? void 0 : _a.filter(function (value) {
+                                    return !chosenPeople_1.includes(value);
                                 }));
-                                untouchables[count % (json.waitTime + 1)] = untouchables[count % (json.waitTime + 1)].concat(chosenPeople);
-                                agenda.at(-1)?.tests.push(new subjectGroup(sub.name, chosenPeople));
+                                untouchables[count % (json.waitTime + 1)] = untouchables[count % (json.waitTime + 1)].concat(chosenPeople_1);
+                                (_b = agenda.at(-1)) === null || _b === void 0 ? void 0 : _b.tests.push(new subjectGroup(sub.name, chosenPeople_1));
                             }
                         }
                     }
-                    for (let el of agenda) {
-                        el.tests = el.tests.filter(value => value.people?.length != 0);
+                    for (var _d = 0, agenda_1 = agenda; _d < agenda_1.length; _d++) {
+                        var el = agenda_1[_d];
+                        el.tests = el.tests.filter(function (value) { var _a; return ((_a = value.people) === null || _a === void 0 ? void 0 : _a.length) != 0; });
                     }
                     return agenda;
                 }
                 else {
-                    log(`json.planFor: ${json.planFor} <= 0`);
+                    log("json.planFor: " + json.planFor + " <= 0");
                 }
             }
             else {
-                log(`json.waiTime: ${json.waitTime} + <= 0`);
+                log("json.waiTime: " + json.waitTime + " + <= 0");
             }
         }
         else {
