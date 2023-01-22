@@ -39,7 +39,7 @@ export function fetchJson() {
     return __awaiter(this, void 0, void 0, function () {
         var url;
         return __generator(this, function (_a) {
-            url = "test/test.json";
+            url = "src/test/test.json";
             return [2, fetch(url)
                     .then(function (response) {
                     if (!response.ok) {
