@@ -18,7 +18,7 @@ export function setAgendaMonth(this: agenda, num: number) {
   )
 
 
-  for (let i of titles) {
+  for (let i of titles) { //aggiorna il titolo
     i.innerText =
       dayIter.getDate().toString() +
       "\n" +
@@ -29,7 +29,7 @@ export function setAgendaMonth(this: agenda, num: number) {
     dayIter.setDate(dayIter.getDate() + 1)
     if (dayIter.getDay() == 0) {
       //non si conta la domenica
-      // == domenica
+      // 0 == domenica
       dayIter.setDate(dayIter.getDate() + 1)
     }
   }
@@ -45,17 +45,20 @@ export function setAgendaMonth(this: agenda, num: number) {
 
     dayIter = tempDay
 
+    //trova l'indice del primo evento avvenuto prima di this.day 
     for (var i = this.agendaData.length - 1; i >= 0; i--) {
       if (isLesserDate(this.agendaData[i].day, dayIter)) {
         break
       }
     }
-      i += 1
+      i += 1 //primo evento per cui evento.day >= this.day 
 
     for (let j = 0; j < titles.length; j++) {
       if(i>=this.agendaData.length){
         break
       }
+      //se il text selezionato coincide in termin cronologici
+      //con la data dell'evento allora mostra i dati dell'evento
       if (isSameDate(dayIter, this.agendaData[i].day)) {
         for (let sub of this.agendaData[i].tests) {
           
@@ -71,7 +74,7 @@ export function setAgendaMonth(this: agenda, num: number) {
           stri += "</div>"
           texts[j].innerHTML += stri
         }
-        i += 1
+        i += 1 //passa al prossimo evento nella lista
       }
 
       dayIter.setDate(dayIter.getDate() + 1)

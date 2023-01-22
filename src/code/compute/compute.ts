@@ -25,28 +25,24 @@ export function compute(json: jsonFileFormat, day: Date){
       if(json.waitTime > 0){
         if(json.planFor > 0) {
 
-      json.people = sortPeople(json)
+      json.people = sortPeople(json) //rimescola le persone
 
       let peopleLists = getPeople(json)
       let daySubjectList = getDaySubjectList(json)
 
-      let untouchables: string[][] = [] //persone preferibilmente non interrogabili
+      let untouchables: string[][] = [] //lista delle persone preferibilmente non interrogabili
       untouchables.length = json.waitTime+1
       untouchables.fill([])
 
-      let agenda : dayList[] = []
-
-      debugger
+      let agenda : dayList[] = [] //lista delle persone scelte
 
       considerPastEvents(json, peopleLists, daySubjectList, untouchables, agenda, day)
 
-      debugger
-
       { //determina la lista di interrogati futuri
-        let subList: Array<string> = []
-        let chosenPeople: Array<string> = []
+        let subList: Array<string> = [] //lista delle persone interrogabili
+        let chosenPeople: Array<string> = [] //lista temporanea delle persone scelte
         
-        let isContained : boolean
+        let isContained : boolean 
 
         let weekDay : number
 
@@ -68,6 +64,7 @@ export function compute(json: jsonFileFormat, day: Date){
 
           tempAgendaDate.setDate(tempAgendaDate.getDate()+1)
           if(tempAgendaDate.getDay()==0){
+            //passa a lunedì se è domenica
             tempAgendaDate.setDate(tempAgendaDate.getDate()+1)
           }
           agenda.push(new dayList(new Date(tempAgendaDate),[]))

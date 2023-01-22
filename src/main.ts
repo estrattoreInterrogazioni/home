@@ -26,8 +26,6 @@ let agen = new agenda(agendaEl, monthEl, buttonLeft, buttonRight, date)
 
 agen.createAgenda() //modifica il DOM, crea la struttura dell'agenda
 
-debugger
-
 inputFile.onchange = (event : Event) => {
     var reader = new FileReader()
 
@@ -39,8 +37,6 @@ inputFile.onchange = (event : Event) => {
         } else {
             console.error("json file not ok")
         }
-
-        debugger
 
         agen.setAgendaMonth(0)
     }
