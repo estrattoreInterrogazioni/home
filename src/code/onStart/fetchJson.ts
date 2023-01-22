@@ -2,7 +2,7 @@ import { jsonFileFormat } from "../jsonFile/jsonFileFormat.js"
 import {log} from "../console.js"
 
 export async function fetchJson(){
-let url="test/test.json"
+let url="src/test/test.json"
 return fetch(url)
   .then((response) => {
 
