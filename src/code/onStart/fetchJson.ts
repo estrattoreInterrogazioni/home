@@ -1,5 +1,5 @@
 import { jsonFileFormat } from "../jsonFile/jsonFileFormat.js"
-import {log} from "../console.js"
+import {error} from "../console.js"
 
 export async function fetchJson(){
 let url="src/test/test.json"
@@ -18,5 +18,5 @@ return fetch(url)
   .then(text => <jsonFileFormat>JSON.parse(text))
   // Catch any errors that might happen, and display a message
   // in the `poemDisplay` box.
-  .catch(error => log(`Could not fetch json: ${error}`))
+  .catch(error => console.error(`Could not fetch json: `, error))
 }

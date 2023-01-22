@@ -17,6 +17,9 @@ export function setAgendaMonth(num) {
                 dayIter.toLocaleDateString("default", {
                     weekday: "long"
                 });
+        if (dayIter.getMonth() != this.day.getMonth()) {
+            i_1.setAttribute("class", i_1.getAttribute("class") + " otherMonth");
+        }
         dayIter.setDate(dayIter.getDate() + 1);
         if (dayIter.getDay() == 0) {
             dayIter.setDate(dayIter.getDate() + 1);

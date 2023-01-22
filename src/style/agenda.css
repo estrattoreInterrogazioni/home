@@ -43,6 +43,10 @@ body {
     padding-right: var(--padding);
 }
 
+.otherMonth {
+    background: #265565;
+}
+
 .day:first-child .title {
     border-top-left-radius: var(--radius);
     border-bottom-left-radius: var(--radius);

@@ -22,7 +22,7 @@ function onFileInput(json) {
         agen.agendaData = res;
     }
     else {
-        error("compute result is undefined " + res);
+        error("compute result is undefined", res);
     }
     agen.setAgendaMonth(0);
 }
@@ -33,7 +33,7 @@ try {
     }
 }
 catch (err) {
-    error(err);
+    console.error(err);
 }
 inputFile.onchange = function (event) {
     var reader = new FileReader();
@@ -43,7 +43,7 @@ inputFile.onchange = function (event) {
             onFileInput(res);
         }
         else {
-            error("onReaderLoad result is undefined " + res);
+            error("onReaderLoad result is undefined", res);
         }
     };
     if (event.target) {

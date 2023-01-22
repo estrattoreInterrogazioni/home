@@ -25,6 +25,10 @@ export function setAgendaMonth(this: agenda, num: number) {
       dayIter.toLocaleDateString("default", {
         weekday: "long",
       })
+    
+    if(dayIter.getMonth() != this.day.getMonth()){
+      i.setAttribute("class", i.getAttribute("class") + " otherMonth")
+    }
 
     dayIter.setDate(dayIter.getDate() + 1)
     if (dayIter.getDay() == 0) {

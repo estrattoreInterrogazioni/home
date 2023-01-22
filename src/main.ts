@@ -35,7 +35,7 @@ function onFileInput(json : jsonFileFormat) {
     if(res){
         agen.agendaData = res
     } else {
-        error(`compute result is undefined ${res}`)
+        error(`compute result is undefined`, res)
     }
 
     agen.setAgendaMonth(0)
@@ -47,7 +47,7 @@ try {
         onFileInput(res)
     }
 } catch (err) {
-    error(err)
+    console.error(err)
 }
 
 inputFile.onchange = (event : Event) => {
@@ -58,7 +58,7 @@ inputFile.onchange = (event : Event) => {
         if(res){
             onFileInput(res)
         } else {
-            error(`onReaderLoad result is undefined ${res}`)
+            error(`onReaderLoad result is undefined`, res)
         }
     }
 

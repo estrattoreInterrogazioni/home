@@ -1,11 +1,12 @@
 .monthSwitcher {
     border-radius: var(--radius);
     background-color: rgb(23, 23, 23);
-    font-size: 1.4rem;
+    font-size: 20px;
 }
 
 #month {
-    min-width: 50vw;
+    min-width: 40vw;
     text-align: center;
     font-size: 1.9rem;
+    padding: 10px;
 }
