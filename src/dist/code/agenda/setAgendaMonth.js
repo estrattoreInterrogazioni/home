@@ -1,11 +1,15 @@
 import { isLesserDate, isSameDate } from "../compute/dateOp.js";
 export function setAgendaMonth(num) {
+    var _a;
     this.day.setMonth(this.day.getMonth() + num);
     var dayIter = new Date(this.day.getFullYear(), this.day.getMonth(), 1);
-    this.monthEl.innerText = dayIter.toLocaleDateString("default", {
-        month: "long",
-        year: "numeric"
-    });
+    {
+        var str = dayIter.toLocaleDateString("default", {
+            month: "long",
+            year: "numeric"
+        });
+        this.monthEl.innerText = str.charAt(0).toUpperCase() + str.slice(1);
+    }
     dayIter.setDate(dayIter.getDate() - (dayIter.getDay() - 1));
     var tempDay = new Date(dayIter);
     var titles = document.getElementsByClassName("title");
@@ -20,6 +24,12 @@ export function setAgendaMonth(num) {
         if (dayIter.getMonth() != this.day.getMonth()) {
             i_1.setAttribute("class", i_1.getAttribute("class") + " otherMonth");
         }
+        else {
+            var res = (_a = i_1.getAttribute("class")) === null || _a === void 0 ? void 0 : _a.replace(" otherMonth", "");
+            if (res) {
+                i_1.setAttribute("class", res);
+            }
+        }
         dayIter.setDate(dayIter.getDate() + 1);
         if (dayIter.getDay() == 0) {
             dayIter.setDate(dayIter.getDate() + 1);
@@ -28,8 +38,8 @@ export function setAgendaMonth(num) {
     if (this.agendaData.length != 0) {
         var stri = void 0;
         var texts = document.getElementsByClassName("text");
-        for (var _a = 0, texts_1 = texts; _a < texts_1.length; _a++) {
-            var x = texts_1[_a];
+        for (var _b = 0, texts_1 = texts; _b < texts_1.length; _b++) {
+            var x = texts_1[_b];
             x.innerHTML = "";
         }
         dayIter = tempDay;
@@ -44,11 +54,11 @@ export function setAgendaMonth(num) {
                 break;
             }
             if (isSameDate(dayIter, this.agendaData[i].day)) {
-                for (var _b = 0, _c = this.agendaData[i].tests; _b < _c.length; _b++) {
-                    var sub = _c[_b];
+                for (var _c = 0, _d = this.agendaData[i].tests; _c < _d.length; _c++) {
+                    var sub = _d[_c];
                     stri = "\n            <div class=\"tag v\">\n              <div class=\"tagTitle\">\n                " + sub.subject + "\n              </div>";
-                    for (var _d = 0, _e = sub.people; _d < _e.length; _d++) {
-                        var person = _e[_d];
+                    for (var _e = 0, _f = sub.people; _e < _f.length; _e++) {
+                        var person = _f[_e];
                         stri += "<div>" + person + "</div>";
                     }
                     stri += "</div>";

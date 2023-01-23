@@ -37,7 +37,7 @@ catch (err) {
 }
 inputFile.onchange = function (event) {
     var reader = new FileReader();
-    reader.onload = function (e) {
+    reader.onloadend = function (e) {
         var res = onReaderLoad(e);
         if (res) {
             onFileInput(res);

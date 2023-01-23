@@ -53,7 +53,7 @@ try {
 inputFile.onchange = (event : Event) => {
     let reader = new FileReader()
 
-    reader.onload = (e : ProgressEvent<FileReader>) => {
+    reader.onloadend = (e : ProgressEvent<FileReader>) => {
         let res = onReaderLoad(e)
         if(res){
             onFileInput(res)

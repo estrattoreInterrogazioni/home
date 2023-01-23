@@ -5,11 +5,13 @@ export function setAgendaMonth(this: agenda, num: number) {
   this.day.setMonth(this.day.getMonth()+num)
   let dayIter = new Date(this.day.getFullYear(), this.day.getMonth(), 1)
 
-  this.monthEl.innerText = dayIter.toLocaleDateString("default", {
-    month: "long",
-    year: "numeric",
-  })
-
+  {
+    let str = dayIter.toLocaleDateString("default", {
+      month: "long",
+      year: "numeric",
+    })
+    this.monthEl.innerText = str.charAt(0).toUpperCase() + str.slice(1)
+  }
   dayIter.setDate(dayIter.getDate() - (dayIter.getDay() - 1)) //il giorno è di sicuro lunedì
   let tempDay = new Date(dayIter)
 
@@ -28,6 +30,11 @@ export function setAgendaMonth(this: agenda, num: number) {
     
     if(dayIter.getMonth() != this.day.getMonth()){
       i.setAttribute("class", i.getAttribute("class") + " otherMonth")
+    } else {
+      let res = i.getAttribute("class")?.replace( " otherMonth", "")
+      if(res){
+        i.setAttribute("class", res)
+      }
     }
 
     dayIter.setDate(dayIter.getDate() + 1)
