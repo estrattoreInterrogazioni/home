@@ -1,6 +1,6 @@
 import { jsonFileFormat } from "../jsonFile/jsonFileFormat.js"
 
-export async function fetchJson(){
+export function fetchJson(){
 let url="src/test/test.json"
 return fetch(url)
   .then((response) => {
@@ -13,7 +13,7 @@ return fetch(url)
     // returned by `response.text()`.
     return response.json()
   })
-  // When response.text() has succeeded, the `then()` handler is called with
+  // When response.json() has succeeded, the `then()` handler is called with
   .then(text => <jsonFileFormat>text)
   // Catch any errors that might happen, and display a message
   // in the `poemDisplay` box.
