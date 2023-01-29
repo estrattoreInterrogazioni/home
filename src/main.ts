@@ -1,9 +1,9 @@
 import {agenda} from "./code/agenda/agenda.js"
 import {onReaderLoad} from "./code/jsonFile/onReaderLoad.js"
 import {compute} from "./code/compute/compute.js"
-import { jsonFileFormat } from "./code/jsonFile/jsonFileFormat.js"
-import {fetchJson} from "./code/onStart/fetchJson.js"
-import { error} from "./code/console.js"
+import {jsonFileFormat } from "./code/jsonFile/jsonFileFormat.js"
+import {getJson} from "./code/onStart/getJson.js"
+import {error} from "./code/console.js"
 // HTML QUERY
 
 //mese selezionato
@@ -30,25 +30,26 @@ let agen = new agenda(agendaEl, monthEl, buttonLeft, buttonRight, new Date(date)
 agen.createAgenda() //modifica il DOM, crea la struttura dell'agenda
 
 function onFileInput(json : jsonFileFormat) {
-    agen.setAgendaMonth(date.getMonth()-agen.day.getMonth()) //riporta il mese al mese corrente
-    let res = compute(json, agen.day)
+
+    if(date.getMonth()!= agen.date.getMonth() || date.getFullYear() != agen.date.getFullYear()){
+        //riporta il mese dell'agenda al mese corrente
+        agen.setAgendaMonth(date.getMonth()-agen.date.getMonth() + (date.getFullYear()-agen.date.getFullYear())*12)
+    }
+
+    let res = compute(json, new Date(agen.date.getFullYear(), agen.date.getMonth(), agen.day, 0, 0, 0, 0))
     if(res){
         agen.agendaData = res
+        agen.setAgendaMonth(0)
     } else {
-        error(`compute result is undefined`, res)
+        error(`compute result is undefined: `, res)
     }
-
-    agen.setAgendaMonth(0)
 }
 
-try {
-    let res = await fetchJson()
-    if(res){
+getJson().then( res => {
+    if (res) {
         onFileInput(res)
     }
-} catch (err) {
-    console.error(err)
-}
+})
 
 inputFile.onchange = (event : Event) => {
     let reader = new FileReader()

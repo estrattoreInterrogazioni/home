@@ -3,17 +3,14 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from) {
         to[j] = from[i];
     return to;
 };
-function shuffle(array) {
-    var _a;
-    var currentIndex = array.length, randomIndex;
-    while (currentIndex != 0) {
-        randomIndex = Math.round(parseFloat(Math.random().toFixed(70)) * currentIndex);
-        currentIndex--;
-        _a = [
-            array[randomIndex], array[currentIndex]
-        ], array[currentIndex] = _a[0], array[randomIndex] = _a[1];
+function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * Math.random() * (i + 1));
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
-    return array;
+    return arr;
 }
 export function sortPeople(json) {
     var arr = __spreadArray([], json.people);
@@ -21,9 +18,9 @@ export function sortPeople(json) {
         return b.score - a.score;
     });
     var indexes = [0];
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i].score != arr[Math.max(i - 1, 0)].score) {
-            indexes.push(i);
+    for (var i = 0; i < arr.length - 1; i++) {
+        if ((arr[i].score) != (arr[i + 1].score)) {
+            indexes.push(i + 1);
         }
     }
     var tempArr;

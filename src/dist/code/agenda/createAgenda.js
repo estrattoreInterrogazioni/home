@@ -10,6 +10,5 @@ export function createAgenda() {
     for (var i = 0; i < 5; i++) {
         this.agendaEl.appendChild(weekEl.cloneNode(true));
     }
-    this.setAgendaMonth(0);
     this.setAgendaSwipeEvent();
 }

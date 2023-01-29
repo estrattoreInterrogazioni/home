@@ -2,25 +2,28 @@ import { agenda } from "./agenda.js"
 import { isLesserDate, isSameDate } from "../compute/dateOp.js"
 
 export function setAgendaMonth(this: agenda, num: number) {
-  this.day.setMonth(this.day.getMonth()+num)
-  let dayIter = new Date(this.day.getFullYear(), this.day.getMonth(), 1)
+  this.date.setMonth(this.date.getMonth()+num) //aggiorna la data
+  let dayIter = new Date(this.date.getFullYear(), this.date.getMonth(), 1) //iteratore per calcloi successivi
 
   {
+    //aggiorna il titolo del mese
     let str = dayIter.toLocaleDateString("default", {
       month: "long",
       year: "numeric",
     })
     this.monthEl.innerText = str.charAt(0).toUpperCase() + str.slice(1)
   }
+
+
   dayIter.setDate(dayIter.getDate() - (dayIter.getDay() - 1)) //il giorno è di sicuro lunedì
-  let tempDay = new Date(dayIter)
+  let tempDay = new Date(dayIter) //servirà dopo per resettare l'iteratore
+
+
 
   let titles = <HTMLElement[]>(
     (<unknown>document.getElementsByClassName("title"))
   )
-
-
-  for (let i of titles) { //aggiorna il titolo
+  for (let i of titles) { //aggiorna i titoli dei giorni
     i.innerText =
       dayIter.getDate().toString() +
       "\n" +
@@ -28,7 +31,8 @@ export function setAgendaMonth(this: agenda, num: number) {
         weekday: "long",
       })
     
-    if(dayIter.getMonth() != this.day.getMonth()){
+    if(dayIter.getMonth() != this.date.getMonth()){
+      //se questo giorno dell'agenda non è dello stesso mese selezionato (mese successivo o precedente, allora applica un altro stile)
       i.setAttribute("class", i.getAttribute("class") + " otherMonth")
     } else {
       let res = i.getAttribute("class")?.replace( " otherMonth", "")
@@ -41,7 +45,7 @@ export function setAgendaMonth(this: agenda, num: number) {
     if (dayIter.getDay() == 0) {
       //non si conta la domenica
       // 0 == domenica
-      dayIter.setDate(dayIter.getDate() + 1)
+      dayIter.setDate(dayIter.getDate() + 1) //se è domenica vai a lunedì
     }
   }
 
@@ -54,7 +58,7 @@ export function setAgendaMonth(this: agenda, num: number) {
       x.innerHTML = ""
     }
 
-    dayIter = tempDay
+    dayIter = tempDay //resetta l'iteratore
 
     //trova l'indice del primo evento avvenuto prima di this.day 
     for (var i = this.agendaData.length - 1; i >= 0; i--) {
@@ -68,7 +72,7 @@ export function setAgendaMonth(this: agenda, num: number) {
       if(i>=this.agendaData.length){
         break
       }
-      //se il text selezionato coincide in termin cronologici
+      //se il text selezionato coincide in termini cronologici
       //con la data dell'evento allora mostra i dati dell'evento
       if (isSameDate(dayIter, this.agendaData[i].day)) {
         for (let sub of this.agendaData[i].tests) {
@@ -92,7 +96,7 @@ export function setAgendaMonth(this: agenda, num: number) {
       if (dayIter.getDay() == 0) {
         //non si conta la domenica
         // == domenica
-        dayIter.setDate(dayIter.getDate() + 1)
+        dayIter.setDate(dayIter.getDate() + 1) //se è domenica vai a lunedì
       }
     }
   }

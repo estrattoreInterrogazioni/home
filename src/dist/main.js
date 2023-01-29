@@ -1,7 +1,7 @@
 import { agenda } from "./code/agenda/agenda.js";
 import { onReaderLoad } from "./code/jsonFile/onReaderLoad.js";
 import { compute } from "./code/compute/compute.js";
-import { fetchJson } from "./code/onStart/fetchJson.js";
+import { getJson } from "./code/onStart/getJson.js";
 import { error } from "./code/console.js";
 var monthEl = document.getElementById("month");
 var buttonLeft = document.getElementById("btnMonthBefore");
@@ -16,25 +16,23 @@ if (date.getDay() == 0) {
 var agen = new agenda(agendaEl, monthEl, buttonLeft, buttonRight, new Date(date));
 agen.createAgenda();
 function onFileInput(json) {
-    agen.setAgendaMonth(date.getMonth() - agen.day.getMonth());
-    var res = compute(json, agen.day);
+    if (date.getMonth() != agen.date.getMonth() || date.getFullYear() != agen.date.getFullYear()) {
+        agen.setAgendaMonth(date.getMonth() - agen.date.getMonth() + (date.getFullYear() - agen.date.getFullYear()) * 12);
+    }
+    var res = compute(json, new Date(agen.date.getFullYear(), agen.date.getMonth(), agen.day, 0, 0, 0, 0));
     if (res) {
         agen.agendaData = res;
+        agen.setAgendaMonth(0);
     }
     else {
-        error("compute result is undefined", res);
+        error("compute result is undefined: ", res);
     }
-    agen.setAgendaMonth(0);
 }
-try {
-    var res = await fetchJson();
+getJson().then(function (res) {
     if (res) {
         onFileInput(res);
     }
-}
-catch (err) {
-    console.error(err);
-}
+});
 inputFile.onchange = function (event) {
     var reader = new FileReader();
     reader.onloadend = function (e) {

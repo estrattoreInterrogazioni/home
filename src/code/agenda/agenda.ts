@@ -10,6 +10,7 @@ export class agenda {
   protected buttonLeft
   protected buttonRight
   day
+  date
   agendaData
 
   constructor(
@@ -17,14 +18,16 @@ export class agenda {
     monthEl: HTMLElement,
     buttonLeft : HTMLButtonElement,
     buttonRight : HTMLButtonElement,
-    day : Date,
+    date : Date,
     agendaData : dayList[] = []
   ){
     this.agendaEl = agendaEl
     this.monthEl = monthEl
     this.buttonLeft = buttonLeft
     this.buttonRight = buttonRight
-    this.day = day
+    this.date = date
+    this.day = this.date.getDate()
+    this.date.setDate(1)
     this.agendaData = agendaData
   }
 

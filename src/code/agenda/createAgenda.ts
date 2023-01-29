@@ -29,18 +29,15 @@ export function createAgenda(this: agenda) {
   var weekEl = document.createElement("div")
   weekEl.setAttribute("class", "h week")
 
-  for (var i = 0; i < 6; i++) { //una settimana contiene 6 giorni (7 - domenica)
+  for (var i = 0; i < 6; i++) { //una settimana contiene 6 giorni (non si conta la domenica)
     weekEl.appendChild(dayEl.cloneNode(true))
   }
-  for (var i = 0; i < 5; i++) { // un mese contiene 5 settimane 
+  for (var i = 0; i < 5; i++) { // un mese contiene per convenzione 5 settimane 
                                 //(i giorni in eccesso visualizzano gli eventi
                                 // del mese precedente e successivo)
     this.agendaEl.appendChild(weekEl.cloneNode(true))
   }
 
-  this.setAgendaMonth(0)     //aumenta o diminuisce il numero del 
-                              //mese in base al numero in input, e modifica il DOM
-
-  this.setAgendaSwipeEvent() //processa gli eventi onclick dei 
-                              //bottoni "mese precedente/successivo"
+  this.setAgendaSwipeEvent() //ascolta e poi processa gli eventi onClick dei 
+                             //bottoni "mese precedente/successivo"
 }

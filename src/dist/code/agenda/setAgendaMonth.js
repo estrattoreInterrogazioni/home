@@ -1,8 +1,8 @@
 import { isLesserDate, isSameDate } from "../compute/dateOp.js";
 export function setAgendaMonth(num) {
     var _a;
-    this.day.setMonth(this.day.getMonth() + num);
-    var dayIter = new Date(this.day.getFullYear(), this.day.getMonth(), 1);
+    this.date.setMonth(this.date.getMonth() + num);
+    var dayIter = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
     {
         var str = dayIter.toLocaleDateString("default", {
             month: "long",
@@ -21,7 +21,7 @@ export function setAgendaMonth(num) {
                 dayIter.toLocaleDateString("default", {
                     weekday: "long"
                 });
-        if (dayIter.getMonth() != this.day.getMonth()) {
+        if (dayIter.getMonth() != this.date.getMonth()) {
             i_1.setAttribute("class", i_1.getAttribute("class") + " otherMonth");
         }
         else {
