@@ -28,10 +28,10 @@ body > *:not(#agenda) {
 
 a {
     text-decoration: none;
-    color: #006013;
+    color: #0f8c28;
     font-weight: bold;
 }
 
 a:hover {
-    color: #00a204;
+    color: #06b308;
 }

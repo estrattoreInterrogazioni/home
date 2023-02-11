@@ -1,7 +1,6 @@
-import { jsonFileFormat } from "../jsonFile/jsonFileFormat.js"
+import { jsonFileFormat, dayListWithDateString } from "../jsonFile/jsonFileFormat"
 
-export async function getJson(){
-let url="src/test/test.json"
+export async function getJson(url : string){
 return fetch(url)
   .then(response => {
 
@@ -14,7 +13,7 @@ return fetch(url)
     return response.json()
   })
   // When response.json() has succeeded, the `then()` handler is called with
-  .then(text => <jsonFileFormat>text)
+  .then(text => <dayListWithDateString[] | jsonFileFormat>text)
   // Catch any errors that might happen, and display a message
   .catch(error => console.error(`Could not fetch json: `, error))
 }

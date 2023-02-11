@@ -1,0 +1,75 @@
+[
+  {
+    "day": "2/13/2023",
+    "tests": [
+      {
+        "subject": "fisica",
+        "people": ["Tommasini", "Cepele"]
+      },
+      {
+        "subject": "arte",
+        "people": ["Bozzi", "Corsi", "Zuffanelli"]
+      },
+      {
+        "subject": "filosofia",
+        "people": [
+          "Mazzanti",
+          "Gragnoli",
+          "Ansani",
+          "Padula",
+          "Macrì",
+          "Zarcone"
+        ]
+      }
+    ]
+  },
+  {
+    "day": "2/14/2023",
+    "tests": [
+      {
+        "subject": "filosofia",
+        "people": [
+          "La Badessa",
+          "Cini",
+          "Massi",
+          "Pucci",
+          "Corrieri",
+          "Barellini"
+        ]
+      }
+    ]
+  },
+  {
+    "day": "2/15/2023",
+    "tests": []
+  },
+  {
+    "day": "2/16/2023",
+    "tests": []
+  },
+  {
+    "day": "2/17/2023",
+    "tests": [
+      {
+        "subject": "filosofia",
+        "people": [
+          "Corsi",
+          "Tommasini",
+          "Bozzi",
+          "Masi",
+          "Zuffanelli",
+          "Cepele"
+        ]
+      }
+    ]
+  },
+  {
+    "day": "2/18/2023",
+    "tests": [
+      {
+        "subject": "inglese",
+        "people": ["Ansani", "Masi", "Barellini"]
+      }
+    ]
+  }
+]

@@ -50,3 +50,11 @@ var dayList = (function () {
     return dayList;
 }());
 export { dayList };
+var dayListWithDateString = (function () {
+    function dayListWithDateString(day, tests) {
+        this.day = day;
+        this.tests = tests;
+    }
+    return dayListWithDateString;
+}());
+export { dayListWithDateString };

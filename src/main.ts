@@ -1,9 +1,10 @@
 import {agenda} from "./code/agenda/agenda.js"
 import {onReaderLoad} from "./code/jsonFile/onReaderLoad.js"
 import {compute} from "./code/compute/compute.js"
-import {jsonFileFormat } from "./code/jsonFile/jsonFileFormat.js"
-import {getJson} from "./code/onStart/getJson.js"
+import {jsonFileFormat, dayList, dayListWithDateString} from "./code/jsonFile/jsonFileFormat.js"
+import {getJson} from "./code/getJson/getJson.js"
 import {error} from "./code/console.js"
+
 // HTML QUERY
 
 //mese selezionato
@@ -19,6 +20,8 @@ let inputFile = <HTMLInputElement>document.getElementById("jsonFile") // input t
 
 // VARIABILI LOCALI
 
+const showResult = true
+
 let date = new Date()
 date.setHours(0, 0, 0, 0)
 if(date.getDay()==0) { //domenica
@@ -29,14 +32,20 @@ let agen = new agenda(agendaEl, monthEl, buttonLeft, buttonRight, new Date(date)
 
 agen.createAgenda() //modifica il DOM, crea la struttura dell'agenda
 
-function onFileInput(json : jsonFileFormat) {
+function onFileInput(json : jsonFileFormat | dayList[]) {
 
     if(date.getMonth()!= agen.date.getMonth() || date.getFullYear() != agen.date.getFullYear()){
         //riporta il mese dell'agenda al mese corrente
         agen.setAgendaMonth(date.getMonth()-agen.date.getMonth() + (date.getFullYear()-agen.date.getFullYear())*12)
     }
 
-    let res = compute(json, new Date(agen.date.getFullYear(), agen.date.getMonth(), agen.day, 0, 0, 0, 0))
+    let res
+    if(json instanceof jsonFileFormat){
+    res = compute(json, new Date(agen.date.getFullYear(), agen.date.getMonth(), agen.day, 0, 0, 0, 0))
+    } else {
+    res = json
+    }
+
     if(res){
         agen.agendaData = res
         agen.setAgendaMonth(0)
@@ -45,11 +54,25 @@ function onFileInput(json : jsonFileFormat) {
     }
 }
 
-getJson().then( res => {
-    if (res) {
-        onFileInput(res)
-    }
-})
+
+if(showResult){ //show only
+    getJson("src/json/eventsShowable.json").then( res => {
+        if (res) {
+            res = <dayListWithDateString[]>res
+            for (let x of res){
+                //@ts-ignore
+                x.day = new Date(x.day)
+            }
+            onFileInput(res as unknown as dayList[])
+        }
+    })
+} else { //compute and show
+    getJson("src/json/school.json").then( res => {
+        if (res) {
+            onFileInput(<jsonFileFormat>res)
+        }
+    })
+}
 
 inputFile.onchange = (event : Event) => {
     let reader = new FileReader()

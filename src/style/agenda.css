@@ -44,7 +44,7 @@ body {
 }
 
 .otherMonth {
-    background: #265565;
+    background: #33758b;
 }
 
 .day:first-child .title {
@@ -72,7 +72,7 @@ body {
 
 .tag{
     margin-top: 2ch;
-    background-color: #0e2c1a;
+    background-color: #123921;
 }
 
 .tag div {

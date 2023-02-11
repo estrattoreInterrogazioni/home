@@ -73,3 +73,13 @@ export class dayList {
     this.tests = tests
   }
 }
+
+export class dayListWithDateString {
+  //lista degli interrogati di una certa data divisi per materia
+  day //data
+  tests //oggetto[] subject (materia + persone interrogate)
+  constructor(day: string, tests: subjectGroup[]) {
+    this.day = day
+    this.tests = tests
+  }
+}
