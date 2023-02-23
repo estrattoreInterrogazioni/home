@@ -2,31 +2,52 @@
 @import url("style/container.css");
 @import url("style/monthSwitcher.css");
 
+@import url("style/password.css");
+
+body {
+    --dark2: #171717;
+    --dark3: #212529;
+
+    --red: #e12727;
+
+    --fontColor: #f8f9fa;
+
+    --paddingText: 7px;
+}
 
 html, body{
     height: 100%;
-    width: 100%;
+}
 
-    margin-left: 0;
-    margin-right: 0;
+body {
+    margin: 0;
 
     font-family: system-ui;
     
-    background-color: #212529;
+    background-color: var(--dark3);
 }
 
 * {
-    color: #f8f9fa;
+    color: var(--fontColor);
 
     border: none;
     outline: none;
 }
 
-body > *:not(#agenda) {
-    padding-left: 10px;
+input, button {
+    border-radius: var(--radius);
+    background: var(--dark2);
 }
 
-a {
+input {
+    padding-left: var(--paddingText);
+}
+
+button:hover {
+    background: var(--dark1);
+}
+
+/*a {
     text-decoration: none;
     color: #0f8c28;
     font-weight: bold;
@@ -34,4 +55,12 @@ a {
 
 a:hover {
     color: #06b308;
+}*/
+
+footer {
+    background-color: var(--dark2);
+
+    margin-top: 3ch;
+    padding-left: var(--paddingText);
+    padding-bottom: 3px;
 }

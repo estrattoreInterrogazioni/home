@@ -6,37 +6,51 @@
     <title>agenda interrogazioni</title>
     <link rel="stylesheet" href="./src/main.css" />
   </head>
-  <body>
+
+  <body class="v">
     <script type="module" src="./src/dist/main.js" defer></script>
+    <div class="el v">
+      <div>
+        <h1 style="text-align: center; margin-top: 2px">Agenda</h1>
 
-    <h1 style="text-align: center">Agenda</h1>
+        <!-- seleziona il mese -->
+        <div id="titleContainer" class="h" style="justify-content: center">
+          <div class="h" style="align-items: center">
+            <button id="btnMonthBefore" class="monthSwitcher">&lt;</button>
+          </div>
 
-    <div id="titleContainer" class="h" style="justify-content: center;" >
-      <div class="h" style="align-items: center;">
-        <button id="btnMonthBefore" class="monthSwitcher">
-          &lt;
-        </button>
+          <div id="month"></div>
+
+          <div class="h" style="align-items: center">
+            <button id="btnMonthAfter" class="monthSwitcher">&gt;</button>
+          </div>
+        </div>
+
+        <div class="v" id="agenda"></div>
+
+        <!--
+        <input 
+        style="margin-top: 50px;"
+        id="jsonFile" type="file" accept=".json">
+        -->
+
+        <div style="margin-left: var(--paddingText)">
+          <!-- password da inserire per inviare i dati al server -->
+          <input
+            id="pushPassword"
+            type="password"
+            placeholder="password..."
+            pattern="Lev1822"
+          />
+          <button id="pushButton">salva</button>
+          <br />
+          <span id="passwordLabel"></span>
+        </div>
       </div>
-
-      <div id="month"></div>
-
-      <div class="h" style="align-items: center;">
-        <button id="btnMonthAfter" class="monthSwitcher">
-          &gt;
-        </button>
-      </div>
+      <!-- dati aggiuntivi -->
+      <footer class="el">
+        Idea ispirata da Giovanni Bozzi
+      </footer>
     </div>
-
-    <div class="v el" id="agenda"></div>
-
-    <!--
-    <input 
-    style="margin-top: 50px;"
-    id="jsonFile" type="file" accept=".json">
-    -->
-
-    <footer style="padding-top: 3ch;padding-bottom: 2ch;">
-      <a style="font-size: 0.7rem" href="./src/content/credits.html"> credits </a>
-    </footer>
   </body>
 </html>

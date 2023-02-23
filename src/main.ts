@@ -1,5 +1,5 @@
 import {agenda} from "./code/agenda/agenda.js"
-import {onReaderLoad} from "./code/jsonFile/onReaderLoad.js"
+//import {onReaderLoad} from "./code/jsonFile/onReaderLoad.js"
 import {compute} from "./code/compute/compute.js"
 import {jsonFileFormat, dayList, dayListWithDateString} from "./code/jsonFile/jsonFileFormat.js"
 import {getJson} from "./code/getJson/getJson.js"
@@ -16,7 +16,7 @@ let buttonRight = <HTMLButtonElement>document.getElementById("btnMonthAfter")
 
 let agendaEl = <HTMLElement>document.getElementById("agenda")
 
-let inputFile = <HTMLInputElement>document.getElementById("jsonFile") // input type="file"
+//let inputFile = <HTMLInputElement>document.getElementById("jsonFile") // input type="file"
 
 // VARIABILI LOCALI
 
@@ -74,6 +74,7 @@ if(showResult){ //show only
     })
 }
 
+/*
 inputFile.onchange = (event : Event) => {
     let reader = new FileReader()
 
@@ -90,3 +91,21 @@ inputFile.onchange = (event : Event) => {
         reader.readAsText((<FileList>(<HTMLInputElement>event.target).files)[0])
     }
 } //processa l'input poi modifica il DOM
+*/
+
+let pushPasswordEl = <HTMLInputElement>document.getElementById("pushPassword")
+let passwordLabel = <HTMLSpanElement>document.getElementById('passwordLabel')
+pushPasswordEl.onkeyup = (ev : Event) => {
+    if(!(<HTMLInputElement>ev.target).checkValidity()){
+        passwordLabel.innerText = 'la tua mente ottenebrata ha scambiato la verità per una menzogna'
+    } else {
+        passwordLabel.innerText = ''
+    }
+}
+
+let pushButton = <HTMLButtonElement>document.getElementById("pushButton")
+pushButton.onclick = () => {
+    if(pushPasswordEl.checkValidity() && pushPasswordEl.value.length > 0){
+        //push
+    }
+}

@@ -1,12 +1,14 @@
 body {
     --radius : 10px;
     --padding: 5px;
+
+    --dark1: #1c1b1b;
 }
 
 #agenda {    
     border-radius: var(--radius);
 
-    background-color: #1c1b1b;
+    background-color: var(--dark1);
 
     width: 90vw;
     
@@ -59,6 +61,10 @@ body {
 .text{
     padding-left: var(--padding);
     min-height: 2ch;
+}
+
+.day:last-child .text{
+    padding-right: var(--padding);
 }
 
 .tag {

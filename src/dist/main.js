@@ -1,5 +1,4 @@
 import { agenda } from "./code/agenda/agenda.js";
-import { onReaderLoad } from "./code/jsonFile/onReaderLoad.js";
 import { compute } from "./code/compute/compute.js";
 import { jsonFileFormat } from "./code/jsonFile/jsonFileFormat.js";
 import { getJson } from "./code/getJson/getJson.js";
@@ -8,7 +7,6 @@ var monthEl = document.getElementById("month");
 var buttonLeft = document.getElementById("btnMonthBefore");
 var buttonRight = document.getElementById("btnMonthAfter");
 var agendaEl = document.getElementById("agenda");
-var inputFile = document.getElementById("jsonFile");
 var showResult = true;
 var date = new Date();
 date.setHours(0, 0, 0, 0);
@@ -55,18 +53,18 @@ else {
         }
     });
 }
-inputFile.onchange = function (event) {
-    var reader = new FileReader();
-    reader.onloadend = function (e) {
-        var res = onReaderLoad(e);
-        if (res) {
-            onFileInput(res);
-        }
-        else {
-            error("onReaderLoad result is undefined", res);
-        }
-    };
-    if (event.target) {
-        reader.readAsText(event.target.files[0]);
+var pushPasswordEl = document.getElementById("pushPassword");
+var passwordLabel = document.getElementById('passwordLabel');
+pushPasswordEl.onkeyup = function (ev) {
+    if (!ev.target.checkValidity()) {
+        passwordLabel.innerText = 'la tua mente ottenebrata ha scambiato la verità per una menzogna';
+    }
+    else {
+        passwordLabel.innerText = '';
+    }
+};
+var pushButton = document.getElementById("pushButton");
+pushButton.onclick = function () {
+    if (pushPasswordEl.validity && pushPasswordEl.value.length > 0) {
     }
 };
