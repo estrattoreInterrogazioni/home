@@ -7,7 +7,7 @@ var monthEl = document.getElementById("month");
 var buttonLeft = document.getElementById("btnMonthBefore");
 var buttonRight = document.getElementById("btnMonthAfter");
 var agendaEl = document.getElementById("agenda");
-var showResult = true;
+var showResult = false;
 var date = new Date();
 date.setHours(0, 0, 0, 0);
 if (date.getDay() == 0) {
