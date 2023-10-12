@@ -3,7 +3,7 @@ import {agenda} from "./code/agenda/agenda.js"
 import {compute} from "./code/compute/compute.js"
 import {jsonFileFormat, dayList, dayListWithDateString} from "./code/jsonFile/jsonFileFormat.js"
 import {getJson} from "./code/getJson/getJson.js"
-import {error} from "./code/console.js"
+import {error, log} from "./code/console.js"
 
 // HTML QUERY
 
@@ -16,11 +16,12 @@ let buttonRight = <HTMLButtonElement>document.getElementById("btnMonthAfter")
 
 let agendaEl = <HTMLElement>document.getElementById("agenda")
 
+//bottone mese successivo
+let buttonCompute = <HTMLButtonElement>document.getElementById("btnCompute")
+
 //let inputFile = <HTMLInputElement>document.getElementById("jsonFile") // input type="file"
 
-// VARIABILI LOCALI
-
-const showResult = false
+const showResult = true
 
 let date = new Date()
 date.setHours(0, 0, 0, 0)
@@ -34,6 +35,18 @@ agen.createAgenda() //modifica il DOM, crea la struttura dell'agenda
 
 function setRes(res : dayList[] | undefined){
     if(res){
+        if((<HTMLInputElement>document.getElementById("consoleLogResult")).checked){
+            for(let i of res){
+                for(let j of i.tests){
+                    log(j.subject)
+                    if(j.people){
+                        for(let person of j.people){
+                            log(person)
+                        }
+                    }
+                }
+            }
+        }
         agen.agendaData = res
         agen.setAgendaMonth(0)
     } else {
@@ -59,7 +72,7 @@ function onFileInputResultData(res : dayList[]){
 }
 
 
-if(showResult){ //show only
+function showPreviousData(){
     getJson("src/json/eventsShowable.json").then( res => {
         if (res) {
             res = <dayListWithDateString[]>res
@@ -70,12 +83,24 @@ if(showResult){ //show only
             onFileInputResultData(res as unknown as dayList[])
         }
     })
-} else { //compute and show
+}
+
+function computeAndShowData(){
     getJson("src/json/school.json").then( res => {
         if (res) {
             onFileInputJsonData(<jsonFileFormat>res)
         }
     })
+}
+
+if(showResult){
+    showPreviousData()
+} else {
+    computeAndShowData()
+}
+
+buttonCompute.onclick = () => {
+    computeAndShowData()
 }
 
 /*
@@ -107,7 +132,7 @@ pushPasswordEl.onkeyup = (ev : Event) => {
     }
 }
 
-let pushButton = <HTMLButtonElement>document.getElementById("pushButton")
+let pushButton = <HTMLButtonElement>document.getElementById("btnPush")
 pushButton.onclick = () => {
     if(pushPasswordEl.checkValidity() && pushPasswordEl.value.length > 0){
         //push
