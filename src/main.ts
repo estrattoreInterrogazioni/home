@@ -20,7 +20,7 @@ let agendaEl = <HTMLElement>document.getElementById("agenda")
 
 // VARIABILI LOCALI
 
-const showResult = true
+const showResult = false
 
 let date = new Date()
 date.setHours(0, 0, 0, 0)
@@ -32,26 +32,30 @@ let agen = new agenda(agendaEl, monthEl, buttonLeft, buttonRight, new Date(date)
 
 agen.createAgenda() //modifica il DOM, crea la struttura dell'agenda
 
-function onFileInput(json : jsonFileFormat | dayList[]) {
-
-    if(date.getMonth()!= agen.date.getMonth() || date.getFullYear() != agen.date.getFullYear()){
-        //riporta il mese dell'agenda al mese corrente
-        agen.setAgendaMonth(date.getMonth()-agen.date.getMonth() + (date.getFullYear()-agen.date.getFullYear())*12)
-    }
-
-    let res
-    if(json instanceof jsonFileFormat){
-    res = compute(json, new Date(agen.date.getFullYear(), agen.date.getMonth(), agen.day, 0, 0, 0, 0))
-    } else {
-    res = json
-    }
-
+function setRes(res : dayList[] | undefined){
     if(res){
         agen.agendaData = res
         agen.setAgendaMonth(0)
     } else {
         error(`compute result is undefined: `, res)
     }
+}
+
+function setCurrentMonth(){
+    if(date.getMonth()!= agen.date.getMonth() || date.getFullYear() != agen.date.getFullYear()){
+        //riporta il mese dell'agenda al mese corrente
+        agen.setAgendaMonth(date.getMonth()-agen.date.getMonth() + (date.getFullYear()-agen.date.getFullYear())*12)
+    }
+}
+
+function onFileInputJsonData(json : jsonFileFormat) {
+    setCurrentMonth()
+    setRes(compute(json, new Date(agen.date.getFullYear(), agen.date.getMonth(), agen.day, 0, 0, 0, 0)))
+}
+
+function onFileInputResultData(res : dayList[]){
+    setCurrentMonth()
+    setRes(res)
 }
 
 
@@ -63,13 +67,13 @@ if(showResult){ //show only
                 //@ts-ignore
                 x.day = new Date(x.day)
             }
-            onFileInput(res as unknown as dayList[])
+            onFileInputResultData(res as unknown as dayList[])
         }
     })
 } else { //compute and show
     getJson("src/json/school.json").then( res => {
         if (res) {
-            onFileInput(<jsonFileFormat>res)
+            onFileInputJsonData(<jsonFileFormat>res)
         }
     })
 }
@@ -97,7 +101,7 @@ let pushPasswordEl = <HTMLInputElement>document.getElementById("pushPassword")
 let passwordLabel = <HTMLSpanElement>document.getElementById('passwordLabel')
 pushPasswordEl.onkeyup = (ev : Event) => {
     if(!(<HTMLInputElement>ev.target).checkValidity()){
-        passwordLabel.innerText = 'la tua mente ottenebrata ha scambiato la verità per una menzogna'
+        passwordLabel.innerText = 'seek and ye shall find'
     } else {
         passwordLabel.innerText = ''
     }

@@ -47,7 +47,7 @@ button:hover {
     background: var(--dark1);
 }
 
-/*a {
+a {
     text-decoration: none;
     color: #0f8c28;
     font-weight: bold;
@@ -55,7 +55,7 @@ button:hover {
 
 a:hover {
     color: #06b308;
-}*/
+}
 
 footer {
     background-color: var(--dark2);

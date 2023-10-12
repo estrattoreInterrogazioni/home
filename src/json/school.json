@@ -23,7 +23,6 @@
     ],
     "subjects" : [
         {"name" : "fisica", "number" : 2, "days" : [4]},
-        {"name" : "arte", "number" : 3, "days" : [1]},
         {"name" : "filosofia", "number" : 4, "days" : [1, 2, 5]}
     ],
     "past" : [

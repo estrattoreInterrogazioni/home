@@ -1,6 +1,5 @@
 import { agenda } from "./code/agenda/agenda.js";
 import { compute } from "./code/compute/compute.js";
-import { jsonFileFormat } from "./code/jsonFile/jsonFileFormat.js";
 import { getJson } from "./code/getJson/getJson.js";
 import { error } from "./code/console.js";
 var monthEl = document.getElementById("month");
@@ -15,17 +14,7 @@ if (date.getDay() == 0) {
 }
 var agen = new agenda(agendaEl, monthEl, buttonLeft, buttonRight, new Date(date));
 agen.createAgenda();
-function onFileInput(json) {
-    if (date.getMonth() != agen.date.getMonth() || date.getFullYear() != agen.date.getFullYear()) {
-        agen.setAgendaMonth(date.getMonth() - agen.date.getMonth() + (date.getFullYear() - agen.date.getFullYear()) * 12);
-    }
-    var res;
-    if (json instanceof jsonFileFormat) {
-        res = compute(json, new Date(agen.date.getFullYear(), agen.date.getMonth(), agen.day, 0, 0, 0, 0));
-    }
-    else {
-        res = json;
-    }
+function setRes(res) {
     if (res) {
         agen.agendaData = res;
         agen.setAgendaMonth(0);
@@ -33,6 +22,19 @@ function onFileInput(json) {
     else {
         error("compute result is undefined: ", res);
     }
+}
+function setCurrentMonth() {
+    if (date.getMonth() != agen.date.getMonth() || date.getFullYear() != agen.date.getFullYear()) {
+        agen.setAgendaMonth(date.getMonth() - agen.date.getMonth() + (date.getFullYear() - agen.date.getFullYear()) * 12);
+    }
+}
+function onFileInputJsonData(json) {
+    setCurrentMonth();
+    setRes(compute(json, new Date(agen.date.getFullYear(), agen.date.getMonth(), agen.day, 0, 0, 0, 0)));
+}
+function onFileInputResultData(res) {
+    setCurrentMonth();
+    setRes(res);
 }
 if (showResult) {
     getJson("src/json/eventsShowable.json").then(function (res) {
@@ -42,14 +44,14 @@ if (showResult) {
                 var x = res_1[_i];
                 x.day = new Date(x.day);
             }
-            onFileInput(res);
+            onFileInputResultData(res);
         }
     });
 }
 else {
     getJson("src/json/school.json").then(function (res) {
         if (res) {
-            onFileInput(res);
+            onFileInputJsonData(res);
         }
     });
 }
@@ -65,6 +67,6 @@ pushPasswordEl.onkeyup = function (ev) {
 };
 var pushButton = document.getElementById("pushButton");
 pushButton.onclick = function () {
-    if (pushPasswordEl.validity && pushPasswordEl.value.length > 0) {
+    if (pushPasswordEl.checkValidity() && pushPasswordEl.value.length > 0) {
     }
 };
