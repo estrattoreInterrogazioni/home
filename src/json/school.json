@@ -8,7 +8,7 @@
         {"name" : "Cepele",     "score" : 1.0},
         {"name" : "Cini",       "score" : 1.0},
         {"name" : "Corrieri",   "score" : 0.6},
-        {"name" : "Corsi",      "score" : 0.8},
+        {"name" : "Corsi",      "score" : 0.7},
         {"name" : "Gragnoli",   "score" : 0.6},
         {"name" : "La Badessa", "score" : 1.0},
         {"name" : "Macrì",      "score" : 0.8},
@@ -22,10 +22,9 @@
         {"name" : "Zuffanelli", "score" : 1.0}
     ],
     "subjects" : [
-        {"name" : "scienze", "number" : 3, "days" : [2]},
         {"name" : "fisica", "number" : 2, "days" : [4]},
         {"name" : "arte", "number" : 3, "days" : [1]},
-        {"name" : "filosofia", "number" : 5, "days" : [5]}
+        {"name" : "filosofia", "number" : 4, "days" : [1, 2, 5]}
     ],
     "past" : [
         {"subject" : "inglese", "people" : ["adds", "rferf"], "date" : "1/10/2010"}
